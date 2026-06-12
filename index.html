@@ -1,680 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-
-    <title>Enchiladas y Flautas - Menú Digital</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #fef8f0 0%, #fff9f5 100%);
-            color: #2d2a24;
-            padding: 20px;
-            padding-bottom: 100px;
-            line-height: 1.5;
-        }
-
-        /* Contenedor principal */
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Header mejorado */
-        .hero {
-            background: linear-gradient(135deg, #8B0000 0%, #a52a1a 100%);
-            border-radius: 28px;
-            padding: 32px 24px;
-            margin-bottom: 28px;
-            text-align: center;
-            box-shadow: 0 20px 35px -12px rgba(139, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "🍽️";
-            position: absolute;
-            font-size: 120px;
-            opacity: 0.08;
-            bottom: -20px;
-            right: -20px;
-            pointer-events: none;
-        }
-
-        .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .hero .subtitle {
-            font-size: 1rem;
-            color: #ffebd6;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        /* Info Cards */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            background: white;
-            border-radius: 24px;
-            padding: 20px;
-            margin-bottom: 28px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid rgba(139, 0, 0, 0.1);
-        }
-
-        .info-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 12px;
-            background: #fef8f2;
-            border-radius: 60px;
-            transition: transform 0.2s, background 0.2s;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .info-card:hover {
-            transform: translateY(-2px);
-            background: #fff0e4;
-        }
-
-        /* Estilo especial para el link de maps */
-        .info-card.maps-link {
-            cursor: pointer;
-        }
-
-        .info-icon {
-            font-size: 1.8rem;
-        }
-
-        .info-text {
-            font-size: 0.85rem;
-        }
-
-        .info-text strong {
-            color: #8B0000;
-            display: block;
-            font-size: 0.9rem;
-        }
-
-        .info-text small {
-            font-size: 0.7rem;
-            color: #2E8B57;
-            display: block;
-            margin-top: 2px;
-        }
-
-        /* Categorías */
-        .category {
-            margin-bottom: 32px;
-        }
-
-        .category-header {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 3px solid #8B0000;
-        }
-
-        .category-title {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: #2d2a24;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .category-badge {
-            background: #f0e6d8;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #8B0000;
-        }
-
-        .category-desc {
-            color: #6b5e4e;
-            font-size: 0.85rem;
-            margin-bottom: 16px;
-            padding-left: 8px;
-            border-left: 3px solid #2E8B57;
-        }
-
-        /* Tarjetas de producto - diseño premium */
-        .menu-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            padding: 18px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            cursor: pointer;
-        }
-
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px -12px rgba(139, 0, 0, 0.2);
-            border-color: rgba(139, 0, 0, 0.2);
-        }
-
-        .product-card.selected {
-            background: linear-gradient(135deg, #fff8f0 0%, #fffefc 100%);
-            border-left: 5px solid #25D366;
-            border-right: 1px solid rgba(37, 211, 102, 0.2);
-        }
-
-        .product-main {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .product-info {
-            flex: 1;
-        }
-
-        .product-name {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: #2d2a24;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .product-tag {
-            background: #2E8B57;
-            color: white;
-            font-size: 0.65rem;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        .product-desc {
-            font-size: 0.85rem;
-            color: #6b5e4e;
-            margin-top: 6px;
-            line-height: 1.4;
-        }
-
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #8B0000;
-            background: #fff0e4;
-            padding: 4px 12px;
-            border-radius: 40px;
-            white-space: nowrap;
-        }
-
-        /* Controles de cantidad modernos */
-        .qty-wrapper {
-            margin-top: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid #f0e6dc;
-            padding-top: 14px;
-        }
-
-        .qty-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #f7f2ea;
-            padding: 4px 8px;
-            border-radius: 60px;
-        }
-
-        .qty-btn {
-            background: white;
-            border: none;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #8B0000;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .qty-btn:active {
-            transform: scale(0.92);
-        }
-
-        .qty-number {
-            font-weight: 800;
-            font-size: 1.1rem;
-            min-width: 30px;
-            text-align: center;
-            color: #2d2a24;
-        }
-
-        .subtotal-indicator {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2E8B57;
-            background: #eaf7e6;
-            padding: 5px 12px;
-            border-radius: 30px;
-        }
-
-        /* Formulario de pedido mejorado */
-        .order-form {
-            background: white;
-            border-radius: 28px;
-            padding: 24px;
-            margin-top: 32px;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-            border: 1px solid rgba(139, 0, 0, 0.1);
-        }
-
-        .form-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f0e6dc;
-        }
-
-        .form-header h3 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: #8B0000;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #2d2a24;
-            font-size: 0.9rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            border-radius: 60px;
-            border: 1.5px solid #e8e0d6;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-            background: #fefcf9;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #8B0000;
-            background: white;
-            box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
-        }
-
-        .order-summary {
-            background: linear-gradient(135deg, #fef8f0 0%, #fffbf5 100%);
-            border-radius: 20px;
-            padding: 16px;
-            margin: 20px 0;
-            border: 1px solid #f0e0d0;
-        }
-
-        .summary-title {
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: #8B0000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .summary-items {
-            font-size: 0.85rem;
-            max-height: 150px;
-            overflow-y: auto;
-            margin-bottom: 12px;
-            padding-right: 8px;
-        }
-
-        .summary-total {
-            font-weight: 800;
-            font-size: 1.2rem;
-            color: #2E8B57;
-            border-top: 2px dashed #e0d0c0;
-            padding-top: 12px;
-            margin-top: 8px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* Botón WhatsApp Premium */
-        .btn-whatsapp-submit {
-            background: #25D366;
-            width: 100%;
-            padding: 16px;
-            border-radius: 60px;
-            border: none;
-            font-weight: 800;
-            font-size: 1.05rem;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp-submit:hover {
-            background: #128C7E;
-            transform: scale(1.01);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
-        }
-
-        /* Botón flotante */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #25D366;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 1000;
-            border: none;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.08);
-            background: #128C7E;
-        }
-
-        .whatsapp-float svg {
-            width: 32px;
-            height: 32px;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            font-size: 0.75rem;
-            color: #8b7a66;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 16px;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .product-price {
-                font-size: 1.1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <!-- Header Premium -->
-    <div class="hero">
-        <h1>🍽️ Enchiladas y Flautas</h1>
-        <div class="subtitle">Sabor auténtico mexicano hecho con amor</div>
-    </div>
-
-    <!-- Información en tarjetas - La de ubicación ahora es un link a Maps -->
-    <div class="info-grid">
-        <a href="https://maps.google.com/?q=Chimalpopoca+97+Ciudad+de+México" target="_blank" class="info-card maps-link" id="mapsLink">
-            <span class="info-icon">📍</span>
-            <div class="info-text">
-                <strong>Ubicación</strong>
-                Chimalpopoca 97, esq. Isabel la Católica 177
-                <small>📌 Abrir en Google Maps →</small>
+    <head>
+        <title>Enchiladas y Flautas - Menú Digital</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+        
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+        <link rel="stylesheet" href="assets/styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header Premium -->
+            <div class="hero">
+                <h1>🍽️ Enchiladas y Flautas</h1>
+                <div class="subtitle">Sabor auténtico mexicano hecho con amor</div>
             </div>
-        </a>
-        <div class="info-card">
-            <span class="info-icon">⏰</span>
-            <div class="info-text">
-                <strong>Horario</strong>
-                Lun-Vie 6:30am - 5:00pm
-            </div>
-        </div>
-        <div class="info-card">
-            <span class="info-icon">🛵</span>
-            <div class="info-text">
-                <strong>Envío Gratis</strong>
-                Colonias cercanas
-            </div>
-        </div>
-    </div>
 
-    <!-- MENÚ DINÁMICO -->
-    <div class="category">
-        <div class="category-header"><div class="category-title">🌯 Enchiladas</div><div class="category-badge">4 piezas</div></div>
-        <div class="category-desc">Servidas con crema, queso fresco, cebolla y tu salsa favorita.</div>
-        <div class="menu-grid" id="menu-enchiladas"></div>
-    </div>
-
-    <div class="category">
-        <div class="category-header"><div class="category-title">🌮 Flautas Doradas</div><div class="category-badge">4 piezas crujientes</div></div>
-        <div class="category-desc">Acompañadas con lechuga, crema, queso y salsa.</div>
-        <div class="menu-grid" id="menu-flautas"></div>
-    </div>
-
-    <div class="category">
-        <div class="category-header"><div class="category-title">🥤 Bebidas</div><div class="category-badge">Refrescantes</div></div>
-        <div class="menu-grid" id="menu-bebidas"></div>
-    </div>
-
-    <!-- Formulario de pedido elegante -->
-    <div class="order-form">
-        <div class="form-header"><span style="font-size: 1.8rem;">📋</span><h3>Completa tu pedido</h3></div>
-        <div class="form-group"><label>👤 Tu nombre</label><input type="text" id="clienteNombre" placeholder="Ej: Ana Rodríguez"></div>
-        <div class="form-group"><label>📍 Dirección de entrega</label><input type="text" id="clienteDireccion" placeholder="Calle, número, colonia"></div>
-        <div class="form-group"><label>📝 Notas especiales (opcional)</label><textarea id="notas" rows="2" placeholder="Sin cebolla, salsa extra, etc..."></textarea></div>
-        
-        <div class="order-summary"><div class="summary-title"><span>🛒</span> Resumen del pedido</div><div class="summary-items" id="resumenItems">Ningún producto seleccionado</div><div class="summary-total"><span>Total:</span><span id="totalPrecio">$0</span></div></div>
-        
-        <button id="enviarPedidoBtn" class="btn-whatsapp-submit"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.56-1.5c1.45.85 3.1 1.3 4.77 1.3 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.58 2 12.04 2zm0 18.27c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.3.89.88-3.22-.2-.31c-.85-1.32-1.3-2.84-1.3-4.38 0-4.56 3.71-8.27 8.27-8.27s8.27 3.71 8.27 8.27-3.71 8.36-8.27 8.36z"/><path d="M16.07 13.8c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.24-.59.76-.72.92-.13.16-.26.18-.48.06-.22-.12-.93-.34-1.77-1.1-.66-.6-1.1-1.33-1.23-1.56-.13-.23-.01-.35.1-.47.1-.1.22-.26.33-.38.1-.12.15-.23.21-.38.06-.15.02-.3-.02-.42-.04-.12-.4-.97-.55-1.33-.14-.35-.29-.3-.39-.3h-.36c-.13 0-.34.05-.52.24-.18.19-.7.69-.7 1.68 0 .99.72 1.95.82 2.08.1.13 1.42 2.18 3.44 3.05.48.2.86.33 1.16.42.49.16.93.14 1.28.09.39-.06 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.1-.19-.16-.42-.28z"/></svg> Enviar pedido por WhatsApp</button>
-    </div>
-    <div class="footer">✨ Enchiladas y Flautas • Hecho con tradición • ¡Gracias por preferirnos!</div>
-</div>
-
-<!-- Botón flotante -->
-<div class="whatsapp-float" id="floatBtn"><svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.56-1.5c1.45.85 3.1 1.3 4.77 1.3 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.58 2 12.04 2z"/><path d="M16.07 13.8c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.24-.59.76-.72.92-.13.16-.26.18-.48.06-.22-.12-.93-.34-1.77-1.1-.66-.6-1.1-1.33-1.23-1.56-.13-.23-.01-.35.1-.47.1-.1.22-.26.33-.38.1-.12.15-.23.21-.38.06-.15.02-.3-.02-.42-.04-.12-.4-.97-.55-1.33-.14-.35-.29-.3-.39-.3h-.36c-.13 0-.34.05-.52.24-.18.19-.7.69-.7 1.68 0 .99.72 1.95.82 2.08.1.13 1.42 2.18 3.44 3.05.48.2.86.33 1.16.42.49.16.93.14 1.28.09.39-.06 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.1-.19-.16-.42-.28z"/></svg></div>
-
-<script>
-    // Datos del menú
-    const productos = [
-        { categoria: 'enchiladas', nombre: 'Enchiladas Poblanas', descripcion: 'Deliciosa salsa verde cremosa con chile poblano de la casa.', precio: 65, tag: 'Salsa Verde' },
-        { categoria: 'enchiladas', nombre: 'Enchiladas de Mole', descripcion: 'Tradicional mole artesanal con un toque sutil de ajonjolí.', precio: 65, tag: 'Mole' },
-        { categoria: 'flautas', nombre: 'Flautas de Carne', descripcion: 'Carne de res deshebrada bien sazonada.', precio: 65, tag: 'Res' },
-        { categoria: 'flautas', nombre: 'Flautas de Papa', descripcion: 'Puré de papa casero suave y terso.', precio: 65, tag: 'Vegetariano' },
-        { categoria: 'flautas', nombre: 'Flautas de Pollo', descripcion: 'Pechuga de pollo deshebrada jugosa.', precio: 65, tag: 'Pollo' },
-        { categoria: 'bebidas', nombre: 'Agua de Jamaica (1L)', descripcion: 'Refrescante agua de jamaica natural.', precio: 25, tag: 'Natural' },
-        { categoria: 'bebidas', nombre: 'Refresco Coca Cola 600ml', descripcion: 'Bebida carbonatada bien fría.', precio: 25, tag: 'Refresco' }
-    ];
-
-    let carrito = new Map(); // key: nombre, value: {cantidad, precio}
-
-    function renderMenu() {
-        const enchiladasDiv = document.getElementById('menu-enchiladas');
-        const flautasDiv = document.getElementById('menu-flautas');
-        const bebidasDiv = document.getElementById('menu-bebidas');
-        
-        enchiladasDiv.innerHTML = '';
-        flautasDiv.innerHTML = '';
-        bebidasDiv.innerHTML = '';
-        
-        productos.forEach(prod => {
-            const card = document.createElement('div');
-            card.className = 'product-card';
-            card.setAttribute('data-name', prod.nombre);
-            const cantidadActual = carrito.get(prod.nombre)?.cantidad || 0;
-            if (cantidadActual > 0) card.classList.add('selected');
-            
-            card.innerHTML = `
-                <div class="product-main">
-                    <div class="product-info">
-                        <div class="product-name">${prod.nombre} ${prod.tag ? `<span class="product-tag">${prod.tag}</span>` : ''}</div>
-                        <div class="product-desc">${prod.descripcion}</div>
+            <!-- Información en tarjetas - La de ubicación ahora es un link a Maps -->
+            <div class="info-grid">
+                <a href="https://maps.google.com/?q=Chimalpopoca+97+Ciudad+de+México" target="_blank" class="info-card maps-link" id="mapsLink">
+                    <span class="info-icon">📍</span>
+                    <div class="info-text">
+                        <strong>Ubicación</strong>
+                        Chimalpopoca 97, esq. Isabel la Católica 177
+                        <small>📌 Abrir en Google Maps →</small>
                     </div>
-                    <div class="product-price">$${prod.precio}</div>
-                </div>
-                <div class="qty-wrapper">
-                    <div class="qty-controls">
-                        <button class="qty-btn minus">−</button>
-                        <span class="qty-number">${cantidadActual}</span>
-                        <button class="qty-btn plus">+</button>
+                </a>
+                <div class="info-card">
+                    <span class="info-icon">⏰</span>
+                    <div class="info-text">
+                        <strong>Horario</strong>
+                        Lunes a Viernes 6:30am - 5:00pm
                     </div>
-                    ${cantidadActual > 0 ? `<div class="subtotal-indicator">Subtotal: $${cantidadActual * prod.precio}</div>` : ''}
                 </div>
-            `;
-            
-            const minusBtn = card.querySelector('.minus');
-            const plusBtn = card.querySelector('.plus');
-            minusBtn.addEventListener('click', (e) => { e.stopPropagation(); actualizarCantidad(prod.nombre, -1, prod.precio, card); });
-            plusBtn.addEventListener('click', (e) => { e.stopPropagation(); actualizarCantidad(prod.nombre, 1, prod.precio, card); });
-            
-            if (prod.categoria === 'enchiladas') enchiladasDiv.appendChild(card);
-            else if (prod.categoria === 'flautas') flautasDiv.appendChild(card);
-            else bebidasDiv.appendChild(card);
-        });
-    }
+                <div class="info-card">
+                    <span class="info-icon">🛵</span>
+                    <div class="info-text">
+                        <strong>Envío Gratis</strong>
+                        Colonias cercanas
+                    </div>
+                </div>
+            </div>
 
-    function actualizarCantidad(nombre, delta, precio, cardElement) {
-        let item = carrito.get(nombre) || { cantidad: 0, precio: precio };
-        let nuevaCant = item.cantidad + delta;
-        if (nuevaCant < 0) nuevaCant = 0;
-        item.cantidad = nuevaCant;
-        carrito.set(nombre, item);
-        
-        // Actualizar UI de esa tarjeta
-        const qtySpan = cardElement.querySelector('.qty-number');
-        qtySpan.innerText = nuevaCant;
-        if (nuevaCant > 0) cardElement.classList.add('selected');
-        else cardElement.classList.remove('selected');
-        
-        const subtotalDiv = cardElement.querySelector('.subtotal-indicator');
-        if (nuevaCant > 0) {
-            if (subtotalDiv) subtotalDiv.innerText = `Subtotal: $${nuevaCant * precio}`;
-            else {
-                const wrapper = cardElement.querySelector('.qty-wrapper');
-                const newSub = document.createElement('div');
-                newSub.className = 'subtotal-indicator';
-                newSub.innerText = `Subtotal: $${nuevaCant * precio}`;
-                wrapper.appendChild(newSub);
-            }
-        } else {
-            if (subtotalDiv) subtotalDiv.remove();
-        }
-        actualizarResumen();
-    }
+            <!-- MENÚ DINÁMICO -->
+            <div class="category">
+                <div class="category-header"><div class="category-title">🌯 Enchiladas</div><div class="category-badge">4 piezas</div></div>
+                <div class="category-desc">Servidas con crema, queso fresco, cebolla y tu salsa favorita.</div>
+                <div class="menu-grid" id="menu-enchiladas"></div>
+            </div>
 
-    function actualizarResumen() {
-        const resumenDiv = document.getElementById('resumenItems');
-        const totalSpan = document.getElementById('totalPrecio');
-        let itemsHtml = '';
-        let total = 0;
-        for (let [nombre, data] of carrito.entries()) {
-            if (data.cantidad > 0) {
-                const subtotal = data.cantidad * data.precio;
-                itemsHtml += `<div style="display: flex; justify-content: space-between; margin-bottom: 6px;"><span>${data.cantidad}x ${nombre}</span><span style="font-weight: 600;">$${subtotal}</span></div>`;
-                total += subtotal;
-            }
-        }
-        if (itemsHtml === '') resumenDiv.innerHTML = '✨ Ningún producto seleccionado. Agrega cantidades con +';
-        else resumenDiv.innerHTML = itemsHtml;
-        totalSpan.innerText = `$${total}`;
-    }
+            <div class="category">
+                <div class="category-header"><div class="category-title">🌮 Flautas Doradas</div><div class="category-badge">4 piezas crujientes</div></div>
+                <div class="category-desc">Acompañadas con lechuga, crema, queso y salsa.</div>
+                <div class="menu-grid" id="menu-flautas"></div>
+            </div>
 
-    function enviarPedido() {
-        const telefono = "525548383367";
-        const nombre = document.getElementById('clienteNombre').value.trim();
-        const direccion = document.getElementById('clienteDireccion').value.trim();
-        const notas = document.getElementById('notas').value.trim();
-        if (!nombre) { alert("📝 Por favor ingresa tu nombre."); return; }
-        if (!direccion) { alert("📍 Ingresa la dirección de entrega."); return; }
-        
-        let productosPedido = [];
-        let totalGeneral = 0;
-        for (let [nombreProd, data] of carrito.entries()) {
-            if (data.cantidad > 0) {
-                productosPedido.push(`${data.cantidad}x ${nombreProd} = $${data.cantidad * data.precio}`);
-                totalGeneral += data.cantidad * data.precio;
-            }
-        }
-        if (productosPedido.length === 0) { alert("🍽️ Selecciona al menos un producto del menú."); return; }
-        
-        let mensaje = `🍽️ *NUEVO PEDIDO - ENCHILADAS Y FLAUTAS* 🍽️%0A%0A`;
-        mensaje += `👤 *Cliente:* ${nombre}%0A`;
-        mensaje += `📍 *Dirección:* ${direccion}%0A`;
-        mensaje += `📦 *Pedido:*%0A${productosPedido.map(p => `• ${p}`).join('%0A')}%0A`;
-        mensaje += `💰 *Total:* $${totalGeneral}%0A`;
-        if (notas) mensaje += `📝 *Notas:* ${notas}%0A`;
-        mensaje += `%0A🙏 ¡Gracias por su preferencia! Envío a domicilio sin costo (la propina para el repartidor es voluntaria, lo que usted considere).`;
-        
-        window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
-    }
-    
-    document.getElementById('enviarPedidoBtn').addEventListener('click', enviarPedido);
-    document.getElementById('floatBtn').addEventListener('click', enviarPedido);
-    
-    renderMenu();
-</script>
-</body>
+            <div class="category">
+                <div class="category-header"><div class="category-title">🥤 Bebidas</div><div class="category-badge">Refrescantes</div></div>
+                <div class="menu-grid" id="menu-bebidas"></div>
+            </div>
+
+            <!-- Formulario de pedido elegante -->
+            <div class="order-form">
+                <div class="form-header"><span style="font-size: 1.8rem;">📋</span><h3>Completa tu pedido</h3></div>
+                <div class="form-group"><label>👤 Tu nombre</label><input type="text" id="clienteNombre" placeholder="Ej: Ana Rodríguez"></div>
+                <div class="form-group"><label>📍 Dirección de entrega</label><input type="text" id="clienteDireccion" placeholder="Calle, número, colonia"></div>
+                <div class="form-group"><label>📝 Notas especiales (opcional)</label><textarea id="notas" rows="2" placeholder="Sin cebolla, salsa extra, etc..."></textarea></div>
+                
+                <div class="order-summary"><div class="summary-title"><span>🛒</span> Resumen del pedido</div><div class="summary-items" id="resumenItems">Ningún producto seleccionado</div><div class="summary-total"><span>Total:</span><span id="totalPrecio">$0</span></div></div>
+                
+                <button id="enviarPedidoBtn" class="btn-whatsapp-submit"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.56-1.5c1.45.85 3.1 1.3 4.77 1.3 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.58 2 12.04 2zm0 18.27c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.3.89.88-3.22-.2-.31c-.85-1.32-1.3-2.84-1.3-4.38 0-4.56 3.71-8.27 8.27-8.27s8.27 3.71 8.27 8.27-3.71 8.36-8.27 8.36z"/><path d="M16.07 13.8c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.24-.59.76-.72.92-.13.16-.26.18-.48.06-.22-.12-.93-.34-1.77-1.1-.66-.6-1.1-1.33-1.23-1.56-.13-.23-.01-.35.1-.47.1-.1.22-.26.33-.38.1-.12.15-.23.21-.38.06-.15.02-.3-.02-.42-.04-.12-.4-.97-.55-1.33-.14-.35-.29-.3-.39-.3h-.36c-.13 0-.34.05-.52.24-.18.19-.7.69-.7 1.68 0 .99.72 1.95.82 2.08.1.13 1.42 2.18 3.44 3.05.48.2.86.33 1.16.42.49.16.93.14 1.28.09.39-.06 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.1-.19-.16-.42-.28z"/></svg> Enviar pedido por WhatsApp</button>
+            </div>
+            <div class="footer">✨ Enchiladas y Flautas • Hecho con tradición • ¡Gracias por preferirnos!</div>
+        </div>
+
+        <!-- Botón flotante -->
+        <div class="whatsapp-float" id="floatBtn"><svg viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.56-1.5c1.45.85 3.1 1.3 4.77 1.3 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.58 2 12.04 2z"/><path d="M16.07 13.8c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.24-.59.76-.72.92-.13.16-.26.18-.48.06-.22-.12-.93-.34-1.77-1.1-.66-.6-1.1-1.33-1.23-1.56-.13-.23-.01-.35.1-.47.1-.1.22-.26.33-.38.1-.12.15-.23.21-.38.06-.15.02-.3-.02-.42-.04-.12-.4-.97-.55-1.33-.14-.35-.29-.3-.39-.3h-.36c-.13 0-.34.05-.52.24-.18.19-.7.69-.7 1.68 0 .99.72 1.95.82 2.08.1.13 1.42 2.18 3.44 3.05.48.2.86.33 1.16.42.49.16.93.14 1.28.09.39-.06 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.1-.19-.16-.42-.28z"/></svg></div>
+
+        <script src="assets/main.js"></script>
+    </body>
 </html>
