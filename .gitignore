@@ -1,0 +1,11 @@
+# Ignorar las dependencias instaladas por Composer
+/vendor/
+
+# Ignorar archivos de entorno locales (seguridad)
+.env
+.env.local
+
+# Ignorar carpetas de configuración de editores (opcional)
+.idea/
+.vscode/
+composer.json

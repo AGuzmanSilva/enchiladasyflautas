@@ -135,3 +135,121 @@ document.getElementById('enviarPedidoBtn').addEventListener('click', enviarPedid
 document.getElementById('floatBtn').addEventListener('click', enviarPedido);
 
 renderMenu();
+
+// Datos bancarios
+const bankData = {
+    clabe: "012 180 02978589739 1",
+    tarjeta: "4152 3144 0656 5161"
+};
+
+// Variables
+let selectedPayment = "efectivo";
+let cart = [];
+
+// Función para mostrar/ocultar datos bancarios en el menú
+function updateBankDataVisibility() {
+    const container = document.getElementById('bankDataContainer');
+    if (selectedPayment === "transferencia") {
+        container.className = "bank-data-visible";
+        container.innerHTML = `
+            <div style="font-weight:800; margin-bottom:12px;">🏦 Datos para transferencia BBVA:</div>
+            <div class="bank-row"><strong>CLABE:</strong> ${bankData.clabe} <button class="copy-btn-small" onclick="copiarTexto('${bankData.clabe}')">Copiar</button></div>
+            <div class="bank-row"><strong>Tarjeta:</strong> ${bankData.tarjeta} <button class="copy-btn-small" onclick="copiarTexto('${bankData.tarjeta}')">Copiar</button></div>
+            <small style="display:block; margin-top:10px;">📌 Envía tu comprobante por este mismo WhatsApp</small>
+        `;
+    } else {
+        container.className = "bank-data-hidden";
+        container.innerHTML = "";
+    }
+}
+
+document.querySelectorAll('.payment-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+        document.querySelectorAll('.payment-option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        selectedPayment = opt.getAttribute('data-payment');
+        updateBankDataVisibility();
+    });
+});
+
+window.copiarTexto = (texto) => {
+    navigator.clipboard.writeText(texto).then(() => alert(`✅ Copiado: ${texto}`));
+};
+
+// Función para limpiar y formatear el texto SIN emojis problemáticos
+function limpiarTextoParaWhatsApp(texto) {
+    // Elimina emojis y caracteres especiales que causan problemas
+    return texto.replace(/[^\x00-\x7F]/g, '').trim();
+}
+
+// Función para generar el mensaje SIN emojis (solo texto plano)
+function generarMensajePlano(nombre, direccion, notas, resumenTexto, total) {
+    let mensaje = "";
+    mensaje += "NUEVO PEDIDO\n";
+    mensaje += "==============================\n\n";
+    mensaje += "Cliente: " + nombre + "\n";
+    mensaje += "Direccion: " + direccion + "\n";
+    mensaje += "Pago: " + (selectedPayment === 'efectivo' ? "Efectivo" : "Transferencia BBVA") + "\n";
+    mensaje += "Notas: " + (notas || "Ninguna") + "\n\n";
+    mensaje += "Pedido:\n";
+    mensaje += resumenTexto + "\n";
+    mensaje += "-------------------------------\n";
+    mensaje += "Total: $" + total + " pesos\n\n";
+    
+    if (selectedPayment === 'transferencia') {
+        mensaje += "DATOS PARA TRANSFERENCIA BBVA:\n";
+        mensaje += "CLABE: " + bankData.clabe + "\n";
+        mensaje += "Tarjeta: " + bankData.tarjeta + "\n";
+        mensaje += "\nImportante: Enviar comprobante de pago a este mismo chat, al momento de la entrega.\n";
+    } else {
+        mensaje += "Pago en efectivo al momento de la entrega (favor de pagar con cambio).\n";
+    }
+    
+    mensaje += "\nConfirmar disponibilidad antes de enviar.";
+    return mensaje;
+}
+
+// Reemplazar el evento del botón
+setTimeout(() => {
+    const btn = document.getElementById('enviarPedidoBtn');
+    if (btn) {
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+        
+        newBtn.addEventListener('click', () => {
+            const nombre = document.getElementById('clienteNombre')?.value.trim() || '';
+            const direccion = document.getElementById('clienteDireccion')?.value.trim() || '';
+            const notas = document.getElementById('notas')?.value.trim() || '';
+            
+            const resumenDiv = document.getElementById('resumenItems');
+            let resumenTexto = resumenDiv?.innerText || '';
+            let totalSpan = document.getElementById('totalPrecio');
+            let totalTexto = totalSpan?.innerText || '$0';
+            let totalNumero = parseInt(totalTexto.replace('$', '')) || 0;
+            
+            if (!nombre || !direccion) {
+                alert('Por favor ingresa tu nombre y direccion');
+                return;
+            }
+            if (totalNumero === 0) {
+                alert('Agrega productos a tu pedido');
+                return;
+            }
+            
+            // Limpiar el resumen de caracteres raros
+            resumenTexto = resumenTexto.replace(/[^\x00-\x7F]/g, '').replace(/Ningún producto seleccionado/g, '');
+            
+            // Generar mensaje plano (SIN EMOJIS)
+            const mensajeFinal = generarMensajePlano(nombre, direccion, notas, resumenTexto, totalNumero);
+            
+            // Codificar para URL
+            const mensajeCodificado = encodeURIComponent(mensajeFinal);
+            
+            // Número de WhatsApp (cambiar por el tuyo)
+            const telefono = "5548383367";
+            const url = `https://wa.me/${telefono}?text=${mensajeCodificado}`;
+            
+            window.open(url, '_blank');
+        });
+    }
+}, 500);
