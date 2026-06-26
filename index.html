@@ -1,95 +1,59 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>Enchiladas y Flautas - Menú Digital</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-        
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
-        <link rel="stylesheet" href="assets/styles.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="hero">
-                <h1>🍽️ Enchiladas y Flautas</h1>
-                <div class="subtitle">Sabor auténtico mexicano hecho con amor</div>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Digital | Comida | Cafetería</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <div class="container">
 
-            <div class="info-grid">
-                <a href="https://maps.google.com/?q=Chimalpopoca+97+Ciudad+de+México" target="_blank" class="info-card maps-link">
-                    <span class="info-icon">📍</span>
-                    <div class="info-text">
-                        <strong>Ubicación</strong>
-                        Chimalpopoca 97, esq. Isabel la Católica 177
-                        <small>📌 Abrir en Google Maps →</small>
-                    </div>
-                </a>
-                <div class="info-card">
-                    <span class="info-icon">⏰</span>
-                    <div class="info-text">
-                        <strong>Horario</strong>
-                        Lunes a Viernes 6:30am - 5:00pm
-                    </div>
-                </div>
-                <div class="info-card">
-                    <span class="info-icon">🛵</span>
-                    <div class="info-text">
-                        <strong>Envío Gratis</strong>
-                        Colonias cercanas
-                    </div>
-                </div>
-            </div>
+        <!-- ===== HEADER ===== -->
+        <header class="hero">
+            <h1>Comida &amp; Cafetería</h1>
+            <div class="subtitle">Menú Digital</div>
+        </header>
 
-            <!-- MENÚ DINÁMICO -->
-            <div class="category">
-                <div class="category-header"><div class="category-title">🌯 Enchiladas</div><div class="category-badge">4 piezas</div></div>
-                <div class="category-desc">Servidas con crema, queso fresco, cebolla y tu salsa favorita.</div>
-                <div class="menu-grid" id="menu-enchiladas"></div>
-            </div>
-
-            <div class="category">
-                <div class="category-header"><div class="category-title">🌮 Flautas Doradas</div><div class="category-badge">4 piezas crujientes</div></div>
-                <div class="category-desc">Acompañadas con lechuga, crema, queso y salsa.</div>
-                <div class="menu-grid" id="menu-flautas"></div>
-            </div>
-
-            <div class="category">
-                <div class="category-header"><div class="category-title">🥤 Bebidas</div><div class="category-badge">Refrescantes</div></div>
-                <div class="menu-grid" id="menu-bebidas"></div>
-            </div>
-
-            <!-- Formulario con selector de pago -->
-            <div class="order-form">
-                <div class="form-header"><span style="font-size: 1.8rem;">📋</span><h3>Completa tu pedido</h3></div>
-                <div class="form-group"><label>👤 Tu nombre</label><input type="text" id="clienteNombre" placeholder="Ej: Ana Rodríguez"></div>
-                <div class="form-group"><label>📍 Dirección de entrega</label><input type="text" id="clienteDireccion" placeholder="Calle, número, colonia"></div>
-                
-                <!-- SELECTOR DE MÉTODO DE PAGO -->
-                <div class="payment-method">
-                    <div class="payment-title">💵 Método de pago</div>
-                    <div class="payment-options">
-                        <div class="payment-option selected" data-payment="efectivo">
-                            <span class="payment-icon">💵</span> Efectivo
-                        </div>
-                        <div class="payment-option" data-payment="transferencia">
-                            <span class="payment-icon">🏦</span> Transferencia
-                        </div>
-                    </div>
-                    <div id="bankDataContainer" class="bank-data-hidden"></div>
-                </div>
-
-                <div class="form-group"><label>📝 Notas especiales (opcional)</label><textarea id="notas" rows="2" placeholder="Sin cebolla, salsa extra, etc..."></textarea></div>
-                
-                <div class="order-summary"><div class="summary-title"><span>🛒</span> Resumen del pedido</div><div class="summary-items" id="resumenItems">Ningún producto seleccionado</div><div class="summary-total"><span>Total:</span><span id="totalPrecio">$0</span></div></div>
-                
-                <button id="enviarPedidoBtn" class="btn-whatsapp-submit"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.56-1.5c1.45.85 3.1 1.3 4.77 1.3 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.58 2 12.04 2zm0 18.27c-1.5 0-2.97-.4-4.26-1.16l-.3-.18-3.3.89.88-3.22-.2-.31c-.85-1.32-1.3-2.84-1.3-4.38 0-4.56 3.71-8.27 8.27-8.27s8.27 3.71 8.27 8.27-3.71 8.36-8.27 8.36z"/><path d="M16.07 13.8c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.24-.59.76-.72.92-.13.16-.26.18-.48.06-.22-.12-.93-.34-1.77-1.1-.66-.6-1.1-1.33-1.23-1.56-.13-.23-.01-.35.1-.47.1-.1.22-.26.33-.38.1-.12.15-.23.21-.38.06-.15.02-.3-.02-.42-.04-.12-.4-.97-.55-1.33-.14-.35-.29-.3-.39-.3h-.36c-.13 0-.34.05-.52.24-.18.19-.7.69-.7 1.68 0 .99.72 1.95.82 2.08.1.13 1.42 2.18 3.44 3.05.48.2.86.33 1.16.42.49.16.93.14 1.28.09.39-.06 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.1-.19-.16-.42-.28z"/></svg> Enviar pedido por WhatsApp</button>
-            </div>
-            <div class="footer">✨ Enchiladas y Flautas • Hecho con tradición • ¡Gracias por preferirnos!</div>
+        <!-- ===== PREGUNTA ===== -->
+        <div class="question">
+            <h2>¿Qué deseas ver hoy? <strong>Elige tu menú</strong></h2>
+            <div class="divider"></div>
+            <p class="sub-question">Dos experiencias únicas para disfrutar</p>
         </div>
 
-        <div class="whatsapp-float" id="floatBtn"><svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.56-1.5c1.45.85 3.1 1.3 4.77 1.3 5.46 0 9.91-4.45 9.91-9.91C22.04 6.45 17.58 2 12.04 2z"/><path d="M16.07 13.8c-.23-.12-1.37-.68-1.58-.76-.21-.08-.36-.12-.51.12-.15.24-.59.76-.72.92-.13.16-.26.18-.48.06-.22-.12-.93-.34-1.77-1.1-.66-.6-1.1-1.33-1.23-1.56-.13-.23-.01-.35.1-.47.1-.1.22-.26.33-.38.1-.12.15-.23.21-.38.06-.15.02-.3-.02-.42-.04-.12-.4-.97-.55-1.33-.14-.35-.29-.3-.39-.3h-.36c-.13 0-.34.05-.52.24-.18.19-.7.69-.7 1.68 0 .99.72 1.95.82 2.08.1.13 1.42 2.18 3.44 3.05.48.2.86.33 1.16.42.49.16.93.14 1.28.09.39-.06 1.2-.49 1.37-.96.17-.47.17-.88.12-.96-.05-.1-.19-.16-.42-.28z"/></svg></div>
+        <!-- ===== TARJETAS ===== -->
+        <div class="cards">
 
-        <script src="assets/main.min.js"></script>
-    </body>
+            <!-- ENCHILADAS -->
+            <a href="menu/index.html" class="card">
+                <span class="badge-deco">🍽️ Comida</span>
+                <span class="emoji-big">🍽️</span>
+                <h3>Comida Flauxil</h3>
+                <span class="tag">Enchiladas y Flautas</span>
+                <p>Preparados con el auténtico sazón de casa, directo a tu mesa.</p>
+                <span class="btn">Ver menú →</span>
+            </a>
+
+            <!-- CAFÉS -->
+            <a href="cafeteria/index.html" class="card">
+                <span class="badge-deco">☕ Cafetería</span>
+                <span class="emoji-big">☕</span>
+                <h3>Cafetería Gichi</h3>
+                <span class="tag">Bebidas calientes y frias</span>
+                <p>El espacio perfecto donde el aroma es café y el sabor es felicidad.</p>
+                <span class="btn">Ver menú →</span>
+            </a>
+
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            <span>© 2026</span> Flauxil · Gichi - Todos los derechos reservados.
+        </div>
+
+    </div>
+</body>
 </html>
