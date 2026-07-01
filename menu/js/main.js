@@ -10,7 +10,7 @@ const CATEGORY_MAP = { enchiladas: "menu-enchiladas", flautas: "menu-flautas", b
 
 (async function init() {
   try {
-    const productos = await cargarJSON("../../data/menu-comida.json");
+    const productos = await cargarJSON("../data/menu-comida.json");
     setupPaymentListeners(CONFIG.comidas.bank);
 
     showLoadingSkeleton(CONTAINERS);

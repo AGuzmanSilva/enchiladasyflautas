@@ -16,7 +16,7 @@ let productos_config = [];
 
 (async function init() {
   try {
-    const data = await cargarJSON("../../data/menu-cafeteria.json");
+    const data = await cargarJSON("../data/menu-cafeteria.json");
     productos = data.productos;
     productos_sabores = data.sabores;
     productos_sustitutos = data.sustitutos;

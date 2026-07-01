@@ -1,9 +1,9 @@
 [
-  { "categoria": "enchiladas", "nombre": "Enchiladas Poblanas", "descripcion": "Deliciosa salsa cremosa de chile poblano de la casa.", "precio": 65, "tag": "Salsa", "imagen": "/assets/images/productos/flauxil/enchiladas-poblanas.webp" },
-  { "categoria": "enchiladas", "nombre": "Enchiladas de Mole", "descripcion": "Tradicional mole artesanal de la casa.", "precio": 65, "tag": "Mole", "imagen": "/assets/images/productos/flauxil/enchiladas-mole.webp" },
-  { "categoria": "flautas", "nombre": "Flautas de Carne", "descripcion": "Carne de res deshebrada bien sazonada.", "precio": 65, "tag": "Res", "imagen": "/assets/images/productos/flauxil/flautas-res.webp" },
-  { "categoria": "flautas", "nombre": "Flautas de Papa", "descripcion": "Puré de papa casero suave y terso.", "precio": 65, "tag": "Papa", "imagen": "/assets/images/productos/flauxil/flautas-papa.webp" },
-  { "categoria": "flautas", "nombre": "Flautas de Pollo", "descripcion": "Pechuga de pollo deshebrada jugosa.", "precio": 65, "tag": "Pollo", "imagen": "/assets/images/productos/flauxil/flautas-pollo.webp" },
-  { "categoria": "bebidas", "nombre": "Agua de Jamaica (1L)", "descripcion": "Refrescante agua de jamaica natural.", "precio": 25, "tag": "Natural", "imagen": "/assets/images/productos/flauxil/agua-jamaica.webp" },
-  { "categoria": "bebidas", "nombre": "Refresco Coca Cola 600ml", "descripcion": "Bebida carbonatada bien fría.", "precio": 25, "tag": "Refresco", "imagen": "/assets/images/productos/flauxil/coca-cola.webp" }
+  { "categoria": "enchiladas", "nombre": "Enchiladas Poblanas", "descripcion": "Deliciosa salsa cremosa de chile poblano de la casa.", "precio": 65, "tag": "Salsa", "imagen": "../assets/images/productos/flauxil/enchiladas-poblanas.webp" },
+  { "categoria": "enchiladas", "nombre": "Enchiladas de Mole", "descripcion": "Tradicional mole artesanal de la casa.", "precio": 65, "tag": "Mole", "imagen": "../assets/images/productos/flauxil/enchiladas-mole.webp" },
+  { "categoria": "flautas", "nombre": "Flautas de Carne", "descripcion": "Carne de res deshebrada bien sazonada.", "precio": 65, "tag": "Res", "imagen": "../assets/images/productos/flauxil/flautas-res.webp" },
+  { "categoria": "flautas", "nombre": "Flautas de Papa", "descripcion": "Puré de papa casero suave y terso.", "precio": 65, "tag": "Papa", "imagen": "../assets/images/productos/flauxil/flautas-papa.webp" },
+  { "categoria": "flautas", "nombre": "Flautas de Pollo", "descripcion": "Pechuga de pollo deshebrada jugosa.", "precio": 65, "tag": "Pollo", "imagen": "../assets/images/productos/flauxil/flautas-pollo.webp" },
+  { "categoria": "bebidas", "nombre": "Agua de Jamaica (1L)", "descripcion": "Refrescante agua de jamaica natural.", "precio": 25, "tag": "Natural", "imagen": "../assets/images/productos/flauxil/agua-jamaica.webp" },
+  { "categoria": "bebidas", "nombre": "Refresco Coca Cola 600ml", "descripcion": "Bebida carbonatada bien fría.", "precio": 25, "tag": "Refresco", "imagen": "../assets/images/productos/flauxil/coca-cola.webp" }
 ]
