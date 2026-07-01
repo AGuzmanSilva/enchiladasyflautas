@@ -48,6 +48,7 @@ self.addEventListener("activate", e => {
 
 self.addEventListener("fetch", e => {
   const url = new URL(e.request.url);
+  if (url.protocol !== "http:" && url.protocol !== "https:") return;
   const path = url.pathname;
 
   const isAsset = /\.(css|js|json|png|ico|webp)$/.test(path);
