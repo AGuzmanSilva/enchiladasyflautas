@@ -1,45 +1,45 @@
 const CACHE = "flauxil-gichi-v3";
 
 const PRECACHE = [
-  "/",
-  "/index.html",
-  "/menu/index.html",
-  "/cafeteria/index.html",
-  "/offline.html",
-  "/assets/variables.css",
-  "/assets/layout.css",
-  "/assets/components.css",
-  "/assets/styles.css",
-  "/assets/shared.js",
-  "/assets/cart.js",
-  "/assets/ui.js",
-  "/assets/payment.js",
-  "/assets/accordion.js",
-  "/assets/product-card.js",
-  "/assets/fetch.js",
-  "/assets/config.example.js",
-  "/data/menu-comida.json",
-  "/data/menu-cafeteria.json",
-  "/assets/icons/icon-192.png",
-  "/assets/icons/icon-512.png",
-  "/assets/images/favicon.ico",
-  "/assets/images/promocion.webp",
-  "/assets/images/productos/enchiladas.webp",
-  "/assets/images/productos/flautas.webp",
-  "/assets/images/productos/agua-jamaica.webp",
-  "/assets/images/productos/coca-cola.webp",
-  "/assets/images/productos/americano.webp",
-  "/assets/images/productos/latte.webp",
-  "/assets/images/productos/capuccino.webp",
-  "/assets/images/productos/mocha.webp",
-  "/assets/images/productos/caramel-macchiato.webp",
-  "/assets/images/productos/chocolate.webp",
-  "/assets/images/productos/bebidas-frias.webp",
-  "/assets/images/productos/pan-dulce.webp",
-  "/manifest.json",
+  ".",
+  "index.html",
+  "menu/index.html",
+  "cafeteria/index.html",
+  "offline.html",
+  "assets/variables.css",
+  "assets/layout.css",
+  "assets/components.css",
+  "assets/styles.css",
+  "assets/shared.js",
+  "assets/cart.js",
+  "assets/ui.js",
+  "assets/payment.js",
+  "assets/accordion.js",
+  "assets/product-card.js",
+  "assets/fetch.js",
+  "assets/config.example.js",
+  "data/menu-comida.json",
+  "data/menu-cafeteria.json",
+  "assets/icons/icon-192.png",
+  "assets/icons/icon-512.png",
+  "assets/images/favicon.ico",
+  "assets/images/promocion.webp",
+  "assets/images/productos/enchiladas.webp",
+  "assets/images/productos/flautas.webp",
+  "assets/images/productos/agua-jamaica.webp",
+  "assets/images/productos/coca-cola.webp",
+  "assets/images/productos/americano.webp",
+  "assets/images/productos/latte.webp",
+  "assets/images/productos/capuccino.webp",
+  "assets/images/productos/mocha.webp",
+  "assets/images/productos/caramel-macchiato.webp",
+  "assets/images/productos/chocolate.webp",
+  "assets/images/productos/bebidas-frias.webp",
+  "assets/images/productos/pan-dulce.webp",
+  "manifest.json",
 ];
 
-const OFFLINE_PAGE = "/offline.html";
+const OFFLINE_PAGE = "offline.html";
 
 self.addEventListener("install", e => {
   e.waitUntil(
@@ -64,8 +64,8 @@ self.addEventListener("fetch", e => {
   const path = url.pathname;
 
   const isAsset = /\.(css|js|json|png|ico|webp)$/.test(path);
-  const isPage = path === "/" || path.endsWith("/index.html");
-  const isData = path.startsWith("/data/") && path.endsWith(".json");
+  const isPage = path.endsWith("/index.html") || path === "/" || path.endsWith("/");
+  const isData = path.includes("/data/") && path.endsWith(".json");
 
   if (isAsset || isData) {
     e.respondWith(cacheFirst(e.request));
