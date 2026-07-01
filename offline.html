@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sin conexión — Flauxil · Gichi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 20px; }
+    .offline-card { background: #fff; border-radius: 28px; padding: 48px 32px; box-shadow: 0 20px 40px rgba(0,0,0,0.08); max-width: 400px; }
+    .offline-icon { font-size: 64px; margin-bottom: 16px; display: block; }
+    .offline-title { font-size: 1.5rem; font-weight: 800; color: #1a1a2e; margin-bottom: 12px; }
+    .offline-text { color: #6b5e4e; margin-bottom: 24px; line-height: 1.6; }
+    .offline-btn { display: inline-block; padding: 14px 32px; background: #8B0000; color: #fff; text-decoration: none; font-weight: 700; border-radius: 60px; transition: background 0.3s; }
+    .offline-btn:hover { background: #6b0000; }
+  </style>
+</head>
+<body>
+  <div class="offline-card">
+    <span class="offline-icon">📡</span>
+    <div class="offline-title">Sin conexión</div>
+    <div class="offline-text">Parece que no tienes internet. Los menús que ya visitaste están disponibles sin conexión.</div>
+    <a href="/" class="offline-btn">Volver al inicio</a>
+  </div>
+</body>
+</html>

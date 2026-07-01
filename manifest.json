@@ -1,0 +1,14 @@
+{
+  "name": "Flauxil · Gichi - Menú Digital",
+  "short_name": "Flauxil·Gichi",
+  "description": "Menú interactivo de Enchiladas y Flautas Flauxil y Cafetería Gichi",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#8B0000",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
