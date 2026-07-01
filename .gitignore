@@ -8,5 +8,13 @@
 # Ignorar carpetas de configuración de editores (opcional)
 .idea/
 .vscode/
-composer.json
-main.js
+
+# Config con datos bancarios (NO subir)
+assets/config.js
+
+# Vite
+dist/
+.vite/
+
+# Node
+node_modules/
