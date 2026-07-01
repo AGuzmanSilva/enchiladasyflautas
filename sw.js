@@ -1,7 +1,6 @@
 const CACHE = "flauxil-gichi-v3";
 
 const PRECACHE = [
-  ".",
   "index.html",
   "menu/index.html",
   "cafeteria/index.html",
@@ -24,18 +23,6 @@ const PRECACHE = [
   "assets/icons/icon-512.png",
   "assets/images/favicon.ico",
   "assets/images/promocion.webp",
-  "assets/images/productos/enchiladas.webp",
-  "assets/images/productos/flautas.webp",
-  "assets/images/productos/agua-jamaica.webp",
-  "assets/images/productos/coca-cola.webp",
-  "assets/images/productos/americano.webp",
-  "assets/images/productos/latte.webp",
-  "assets/images/productos/capuccino.webp",
-  "assets/images/productos/mocha.webp",
-  "assets/images/productos/caramel-macchiato.webp",
-  "assets/images/productos/chocolate.webp",
-  "assets/images/productos/bebidas-frias.webp",
-  "assets/images/productos/pan-dulce.webp",
   "manifest.json",
 ];
 
