@@ -1,0 +1,23 @@
+/* ============================================
+   ESTILO GOURMET - Con Rojo Vino + Azul + Dorado
+   Paleta: #8B0000 (Rojo) + #1a1a2e (Azul) + #d4af37 (Dorado)
+   ============================================ */
+
+/* ===== RESET Y ESTILOS BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #fef8f4 0%, #faf6f0 100%);
+    color: #1a1a2e;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+}
