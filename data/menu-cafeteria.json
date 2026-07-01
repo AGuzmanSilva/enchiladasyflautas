@@ -1,0 +1,40 @@
+{
+  "productos": [
+    { "categoria": "calientes", "nombre": "Americano 10 oz", "descripcion": "Lleva un shot de espresso y luego agua.", "precio": 20, "tag": "295 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": false, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/americano.webp" },
+    { "categoria": "calientes", "nombre": "Americano 16 oz", "descripcion": "Lleva un shot de espresso y luego agua.", "precio": 28, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": false, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/americano.webp" },
+    { "categoria": "calientes", "nombre": "Latte 10 oz", "descripcion": "Lleva un shot de espresso y m\u00e1s cantidad de leche entera.", "precio": 40, "tag": "295 ml", "opciones": { "productos_sabores": true, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/latte.webp" },
+    { "categoria": "calientes", "nombre": "Latte 16 oz", "descripcion": "Lleva un shot de espresso y m\u00e1s cantidad de leche entera.", "precio": 50, "tag": "473 ml", "opciones": { "productos_sabores": true, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/latte.webp" },
+    { "categoria": "calientes", "nombre": "Capuccino 10 oz", "descripcion": "Lleva un shot de espresso, vapor y espuma de leche entera a partes iguales.", "precio": 40, "tag": "295 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/cappuccino.webp" },
+    { "categoria": "calientes", "nombre": "Capuccino 16 oz", "descripcion": "Lleva un shot de espresso, vapor y espuma de leche entera a partes iguales.", "precio": 50, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/cappuccino.webp" },
+    { "categoria": "calientes", "nombre": "Mocha 10 oz", "descripcion": "Lleva un shot de espresso, chocolate y leche entera a partes proporcionadas.", "precio": 45, "tag": "295 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/mocha.webp" },
+    { "categoria": "calientes", "nombre": "Mocha 16 oz", "descripcion": "Lleva un shot de espresso, chocolate y leche entera a partes proporcionadas.", "precio": 55, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/mocha.webp" },
+    { "categoria": "calientes", "nombre": "Caramel Macchiato 10 oz", "descripcion": "Lleva un shot de espresso, vainilla, leche entera vaporizada a partes proporcionadas y se dibuja una rejilla de caramelo sobre la espuma.", "precio": 50, "tag": "295 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/caramel-macchiato.webp" },
+    { "categoria": "calientes", "nombre": "Caramel Macchiato 16 oz", "descripcion": "Lleva un shot de espresso, vainilla, leche entera vaporizada a partes proporcionadas y se dibuja una rejilla de caramelo sobre la espuma.", "precio": 60, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/caramel-macchiato.webp" },
+    { "categoria": "calientes", "nombre": "Chocolate 10 oz", "descripcion": "Lleva leche entera con chocolate en polvo.", "precio": 35, "tag": "295 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": false }, "imagen": "/assets/images/productos/gichi/chocolate.webp" },
+    { "categoria": "calientes", "nombre": "Chocolate 16 oz", "descripcion": "Lleva leche entera con chocolate en polvo.", "precio": 45, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": false }, "imagen": "/assets/images/productos/gichi/chocolate.webp" },
+    { "categoria": "frios", "nombre": "Iced Americano 16 oz", "descripcion": "Lleva un shot de espresso, agua y hielo.", "precio": 30, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": false, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/iced-americano.webp" },
+    { "categoria": "frios", "nombre": "Iced Latte 16 oz", "descripcion": "Lleva un shot de espresso, leche entera y hielo.", "precio": 50, "tag": "473 ml", "opciones": { "productos_sabores": true, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/iced-latte.webp" },
+    { "categoria": "frios", "nombre": "Iced Mocha 16 oz", "descripcion": "Lleva un shot de espresso, chocolate, leche entera a partes proporcionadas y hielo.", "precio": 55, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/iced-mocha.webp" },
+    { "categoria": "frios", "nombre": "Iced Caramel Macchiato 16 oz", "descripcion": "Lleva un shot de espresso, vainilla, leche entera a partes proporcionadas, hielo y caramelo en el vaso.", "precio": 60, "tag": "473 ml", "opciones": { "productos_sabores": false, "productos_sustitutos": true, "productos_extra": true }, "imagen": "/assets/images/productos/gichi/iced-caramel-macchiato.webp" },
+    { "categoria": "panes", "nombre": "Cuernito", "descripcion": "Delicioso pan de cuernito", "precio": 19, "tag": "por unidad", "maximo": 5, "imagen": "/assets/images/productos/gichi/pan-cuernito.webp" },
+    { "categoria": "panes", "nombre": "Oreja", "descripcion": "Delicioso pan de oreja", "precio": 19, "tag": "por unidad", "maximo": 5, "imagen": "/assets/images/productos/gichi/pan-oreja.webp" },
+    { "categoria": "panes", "nombre": "Concha de vainilla", "descripcion": "Delicioso pan de concha sabor vainilla", "precio": 19, "tag": "por unidad", "maximo": 5, "imagen": "/assets/images/productos/gichi/pan-concha-vainilla.webp" },
+    { "categoria": "extras", "nombre": "Sustituto de az\u00facar", "descripcion": "Sobre de sustituto de az\u00facar.", "precio": 0, "tag": "1 g", "maximo": 2 }
+  ],
+  "sabores": [
+    { "nombre": "Caramelo", "precio": 5, "descripcion": "Dulce y delicioso sabor a caramelo.", "cantidad": 1, "maximo": 1 },
+    { "nombre": "Vainilla", "precio": 5, "descripcion": "Suave y arom\u00e1tico sabor a vainilla.", "cantidad": 1, "maximo": 1 },
+    { "nombre": "Chocolate", "precio": 5, "descripcion": "Intenso sabor a chocolate caliente.", "cantidad": 1, "maximo": 1 }
+  ],
+  "sustitutos": [
+    { "nombre": "Leche Deslactada", "precio": 5, "descripcion": "Leche sin lactosa, ideal para personas con intolerancia a la lactosa.", "cantidad": 1, "maximo": 1 }
+  ],
+  "extras": [
+    { "nombre": "Shot Extra de espresso", "precio": 10, "descripcion": "Agrega un shot extra de espresso a tu bebida.", "cantidad": 1, "maximo": 1 }
+  ],
+  "config": [
+    { "nombre": "productos_sabores", "tipo": "options" },
+    { "nombre": "productos_sustitutos", "tipo": "options" },
+    { "nombre": "productos_extra", "tipo": "checkbox" }
+  ]
+}
