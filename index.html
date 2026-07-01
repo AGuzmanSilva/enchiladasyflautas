@@ -7,9 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <link rel="stylesheet" href="assets/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#8B0000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script data-goatcounter="https://alexis.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
     <div class="container">
+        <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+        <main id="contenido-principal">
 
         <!-- ===== HEADER ===== -->
         <header class="hero">
@@ -54,6 +61,28 @@
             <span>© 2026</span> Flauxil · Gichi - Todos los derechos reservados.
         </div>
 
+    </main>
     </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(reg => {
+                reg.addEventListener('updatefound', () => {
+                    const newSW = reg.installing;
+                    newSW.addEventListener('statechange', () => {
+                        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+                            const notif = document.createElement('div');
+                            notif.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:16px 24px;border-radius:16px;font-size:0.9rem;z-index:99999;display:flex;align-items:center;gap:16px;box-shadow:0 8px 30px rgba(0,0,0,0.3);font-family:Inter,sans-serif;animation:fadeIn 0.3s ease;';
+                            notif.innerHTML = '🆕 Nueva versión disponible <button id="updateBtn" style="background:#25D366;border:none;color:#fff;padding:8px 20px;border-radius:40px;font-weight:700;cursor:pointer;font-size:0.85rem;">Actualizar</button>';
+                            document.body.appendChild(notif);
+                            document.getElementById('updateBtn').addEventListener('click', () => {
+                                newSW.postMessage('skipWaiting');
+                                window.location.reload();
+                            });
+                        }
+                    });
+                });
+            });
+        }
+    </script>
 </body>
 </html>
