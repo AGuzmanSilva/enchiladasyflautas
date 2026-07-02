@@ -1,4 +1,4 @@
-import { carrito, actualizarCantidad, actualizarResumen } from "../../assets/cart.js";
+import { carrito, actualizarCantidad, actualizarResumen, tieneProductosEnCarrito } from "../../assets/cart.js";
 import { mostrarMensaje, showLoadingSkeleton, enviarPedidoOffline } from "../../assets/ui.js";
 import { setupPaymentListeners } from "../../assets/payment.js";
 import { initAccordion } from "../../assets/accordion.js";
@@ -68,6 +68,26 @@ const CATEGORY_MAP = { enchiladas: "menu-enchiladas", flautas: "menu-flautas", b
     setupEnviarButton(enviarPedido);
     renderMenu();
     initAccordion();
+
+    const switchLink = document.querySelector("[data-nav-switch]");
+    const modal = document.getElementById("modalCambioMenu");
+    const cancelBtn = document.getElementById("modalCancelar");
+    const confirmBtn = document.getElementById("modalConfirmar");
+    let pendingHref = "";
+
+    if (switchLink && modal) {
+      switchLink.addEventListener("click", e => {
+        if (tieneProductosEnCarrito()) {
+          e.preventDefault();
+          pendingHref = switchLink.href;
+          modal.classList.add("active");
+        }
+      });
+
+      cancelBtn.addEventListener("click", () => modal.classList.remove("active"));
+      confirmBtn.addEventListener("click", () => { window.location.href = pendingHref; });
+      modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("active"); });
+    }
   } catch {
     mostrarMensaje("Error al cargar el menú. Verifica tu conexión.", "error", 5000);
   }

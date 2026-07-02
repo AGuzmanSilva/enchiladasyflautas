@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { carrito, actualizarCantidad, actualizarResumen, selectedPayment, setSelectedPayment } from "../assets/cart.js";
+import { carrito, actualizarCantidad, actualizarResumen, selectedPayment, setSelectedPayment, tieneProductosEnCarrito } from "../assets/cart.js";
 
 function setupDOM() {
   document.body.innerHTML = `
@@ -49,6 +49,27 @@ describe("carrito", () => {
     actualizarResumen();
     const total = document.getElementById("totalPrecio");
     expect(total.innerText).toBe("$20");
+  });
+});
+
+describe("tieneProductosEnCarrito", () => {
+  beforeEach(() => {
+    carrito.clear();
+  });
+
+  it("debe retornar false si el carrito está vacío", () => {
+    expect(tieneProductosEnCarrito()).toBe(false);
+  });
+
+  it("debe retornar true si hay productos con cantidad > 0", () => {
+    carrito.set("Tacos", { cantidad: 2, precio: 10 });
+    expect(tieneProductosEnCarrito()).toBe(true);
+  });
+
+  it("debe retornar false si todos los productos tienen cantidad 0", () => {
+    carrito.set("Tacos", { cantidad: 0, precio: 10 });
+    carrito.set("Tostadas", { cantidad: 0, precio: 15 });
+    expect(tieneProductosEnCarrito()).toBe(false);
   });
 });
 

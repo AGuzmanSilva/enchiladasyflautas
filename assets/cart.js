@@ -5,6 +5,13 @@ export function setSelectedPayment(value) {
   selectedPayment = value;
 }
 
+export function tieneProductosEnCarrito() {
+  for (const [, data] of carrito) {
+    if (data.cantidad > 0) return true;
+  }
+  return false;
+}
+
 export function actualizarResumen() {
   const resumenDiv = document.getElementById("resumenItems");
   const totalSpan = document.getElementById("totalPrecio");
