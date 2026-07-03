@@ -1,4 +1,4 @@
-import { carrito, actualizarCantidad, actualizarResumen, tieneProductosEnCarrito } from "../../assets/cart.js";
+import { carrito, actualizarCantidad, actualizarResumen, tieneProductosEnCarrito, selectedPayment } from "../../assets/cart.js";
 import { mostrarMensaje, showLoadingSkeleton, enviarPedidoOffline } from "../../assets/ui.js";
 import { setupPaymentListeners } from "../../assets/payment.js";
 import { initAccordion } from "../../assets/accordion.js";
@@ -59,6 +59,7 @@ const CATEGORY_MAP = { enchiladas: "menu-enchiladas", flautas: "menu-flautas", b
       ticket += "📦 *Pedido:*%0A";
       productosList.forEach(p => { ticket += "• " + p + "%0A"; });
       ticket += "💰 *Total:* $" + totalGeneral + "%0A";
+      ticket += "*Pago:* " + (selectedPayment === "transferencia" ? "Transferencia" : "Efectivo") + "%0A";
       if (notas) ticket += "📝 *Notas:* " + notas + "%0A";
       ticket += "%0A🙏 ¡Gracias por su preferencia! Envío a domicilio sin costo (la propina para el repartidor es voluntaria, lo que usted considere).";
 
