@@ -1,4 +1,4 @@
-const CACHE = "flauxil-gichi-v3";
+const CACHE = "flauxil-gichi-v4";
 
 const PRECACHE = [
   "index.html",

@@ -142,13 +142,10 @@
                         newSW.addEventListener('statechange', () => {
                             if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
                                 const notif = document.createElement('div');
-                                notif.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:16px 24px;border-radius:16px;font-size:0.9rem;z-index:99999;display:flex;align-items:center;gap:16px;box-shadow:0 8px 30px rgba(0,0,0,0.3);font-family:Inter,sans-serif;animation:fadeIn 0.3s ease;';
-                                notif.innerHTML = '🆕 Nueva versión disponible <button id="updateBtn" style="background:#25D366;border:none;color:#fff;padding:8px 20px;border-radius:40px;font-weight:700;cursor:pointer;font-size:0.85rem;">Actualizar</button>';
+                                notif.textContent = '🆕 Nueva versión disponible';
+                                notif.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:16px 24px;border-radius:16px;font-size:0.9rem;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,0.3);font-family:Inter,sans-serif;animation:fadeIn 0.3s ease;';
                                 document.body.appendChild(notif);
-                                document.getElementById('updateBtn').addEventListener('click', () => {
-                                    newSW.postMessage('skipWaiting');
-                                    window.location.reload();
-                                });
+                                setTimeout(() => window.location.reload(), 2000);
                             }
                         });
                     });
