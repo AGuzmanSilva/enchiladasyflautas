@@ -15,7 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Inject config
-        run: echo '${{ secrets.CONFIG_JS }}' > assets/config.js
+        env:
+          CONFIG_JS: ${{ secrets.CONFIG_JS }}
+        run: |
+          if [ -z "$CONFIG_JS" ]; then
+            echo "⚠️  CONFIG_JS secret not set, using config.example.js"
+            cp assets/config.example.js assets/config.js
+          else
+            printf '%s\n' "$CONFIG_JS" > assets/config.js
+          fi
       - uses: actions/configure-pages@v4
       - uses: actions/upload-pages-artifact@v3
         with:
